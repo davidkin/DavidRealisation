@@ -2,6 +2,7 @@ class MyArray {
     
     constructor() {
 
+<<<<<<< HEAD
         if (arguments.length === 1 && typeof arguments[0] === 'string') {
             this[0] = arguments[0];
             this.length = arguments.length;
@@ -160,3 +161,6 @@ class MyArray {
 export default MyArray;
 
 
+=======
+export default MyArray;
+>>>>>>> 2e0ca2c7824dd64db42245c204dce510f0b9b40f

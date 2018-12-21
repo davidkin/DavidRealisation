@@ -34,8 +34,8 @@ describe('tests for method sort', () => {
     const comparator = jest.fn();
 
     arr.sort(comparator);
-    
-    expect(comparator.mock.calls.length).toBe(2);
+
+    expect(comparator.mock.calls[0].length).toBe(2);
   });
 
   test('should work correctly without comparator', () => {

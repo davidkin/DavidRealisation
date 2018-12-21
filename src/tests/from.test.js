@@ -27,7 +27,7 @@ describe("tests for method FROM", () => {
 
   test("Method FROM must return new instance of MyArray with current elements", () => {
     const arr = MyArray.from([10, 20, 30]);
-    const arrControl = { 0: 10, 1: 20, 2: 30 };
+    const arrControl = new MyArray(10, 20, 30);
 
     expect(arr).toBeInstanceOf(MyArray);
     expect(arr).toEqual(arrControl);
