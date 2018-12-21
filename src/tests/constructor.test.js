@@ -1,4 +1,4 @@
-import MyArray from '../index.js';
+import MyArray from '../index';
 
   describe('tests for constructor', () => {
     test('should correct work with 0,1,2 ... n arguments(create 3 instance and check length and content)', () => {

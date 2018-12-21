@@ -1,4 +1,4 @@
-import MyArray from "./index";
+import MyArray from "../index";
 
 describe("tests for method FROM", () => {
   test("Class has static method FROM", () => {
@@ -62,3 +62,4 @@ describe("tests for method FROM", () => {
     expect(baseArr[2]).toBe(arrayLine[2]);
   });
 });
+
