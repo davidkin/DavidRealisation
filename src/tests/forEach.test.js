@@ -89,6 +89,7 @@ describe('tests for method forEach', () => {
     };
 
     user.testForEach();
+
     expect(testArr).toEqual(['ivan2', 'ivan2', 'ivan2']);
   });
 
