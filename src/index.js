@@ -127,8 +127,14 @@ class MyArray {
       return this[0];
     }
 
+    if (startValue === undefined) {
+      acc = this[0];
+    } else {
+      acc = callback(startValue, this[0], 0, this);
+    }
 
-    for (let i = 0; i < this.length; i++) {
+
+    for (let i = 1; i < this.length; i++) {
       acc = callback(acc, this[i], i, this);
     }
 
