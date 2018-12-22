@@ -115,6 +115,19 @@ class MyArray {
   reduce(callback, startValue) {
     let acc = startValue === undefined ? this[0] : startValue;
 
+    if (this.length === 0 && !startValue) {
+      throw new TypeError('Reduce of empty array with no initial value');
+    }
+
+    if (this.length === 0) {
+      return startValue;
+    }
+
+    if (this.length === 1 && !startValue) {
+      return this[0];
+    }
+
+
     for (let i = 0; i < this.length; i++) {
       acc = callback(acc, this[i], i, this);
     }
