@@ -75,10 +75,10 @@ describe('tests for method forEach', () => {
 
   test('thisArg is set as this of callbackFunction properly for forEach method ', () => {
     const testArr = [];
+
     const user2 = {
       name: 'ivan2'
     };
-
     const user = {
       name: 'ivan',
       testForEach() {
