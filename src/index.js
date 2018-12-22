@@ -173,6 +173,18 @@ class MyArray {
     return this;
   }
 
+  find(callback, thisArg) {
+    let elemFind = null;
+
+    for (let i = 0; i < this.length; i++) {
+      elemFind = this[i];
+
+      if (callback.call(thisArg, this[i], i, this)) {
+        return elemFind;
+      }
+    }
+  }
+
   * [Symbol.iterator]() {
     for (let i = 0; i < this.length; i++) {
       yield this[i];
