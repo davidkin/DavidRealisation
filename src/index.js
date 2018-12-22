@@ -127,9 +127,12 @@ class MyArray {
 
     if (!cb) {
       cb = (a, b) => {
-        if (a > b) {
+        const a1 = String(a);
+        const b1 = String(b);
+
+        if (a1 > b1) {
           return 1;
-        } else if (b > a) {
+        } else if (b1 > a1) {
           return -1;
         } else {
           return 0;
