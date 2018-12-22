@@ -99,9 +99,15 @@ class MyArray {
   toString() {
     let newStr = '';
 
-    for (let i = 0; i < this.length; i++) {
-      newStr += `${this[i]} `;
+    if (this.length === 0) {
+      return '';
     }
+
+    for (let i = 0; i < this.length - 1; i++) {
+      newStr += `${String(this[i])},`;
+    }
+
+    newStr += this[this.length - 1];
 
     return newStr;
   }
