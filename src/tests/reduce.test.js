@@ -31,7 +31,8 @@ describe('tests for method reduce', () => {
     }).toThrow();
   });
 
-  test('If an array is empty but there is an InitialValue as a parameter', () => {
+  test(`If an array is empty but there is an InitialValue as a parameter,
+   callback function shouldn't even be called, and the result of the method will be ItitialValue`, () => {
     const arr = new MyArray();
     const mockCallback = jest.fn();
     const thisArg = { minimum: 10, maximum: 20 };
@@ -48,8 +49,7 @@ describe('tests for method reduce', () => {
     expect(mockCallback.mock.calls[0][0]).toEqual(1);
   });
 
-  test(`If array is empty and InitialValue is specified, callback 
-      shouldn't  be called, and methods result should be ItitialValue`, () => {
+  test('If an array is empty and initialValue is absent, reduce has to return TypeError', () => {
     const arr = new MyArray();
     const callReduceOnEmptyArray = () => {
       arr.reduce(() => ({}));
@@ -58,7 +58,7 @@ describe('tests for method reduce', () => {
     expect(callReduceOnEmptyArray).toThrow(TypeError);
   });
 
-  test.only(`The number of callback function calls should be equal to 
+  test.skip(`The number of callback function calls should be equal to 
     the arr.length with init value and arr.length-1 without`, () => {
     const arr = new MyArray(1, 2, 3, 5);
     const mockCallbackWithInitValue = jest.fn();
