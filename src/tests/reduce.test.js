@@ -58,7 +58,7 @@ describe('tests for method reduce', () => {
     expect(callReduceOnEmptyArray).toThrow(TypeError);
   });
 
-  test.skip(`The number of callback function calls should be equal to 
+  test(`The number of callback function calls should be equal to 
     the arr.length with init value and arr.length-1 without`, () => {
     const arr = new MyArray(1, 2, 3, 5);
     const mockCallbackWithInitValue = jest.fn();
