@@ -185,6 +185,82 @@ class MyArray {
     }
   }
 
+  // slice(begin, end) {
+  //   const newArr = new MyArray();
+  //   let start = begin;
+  //   let finished = end;
+
+  //   if (!start && !finished) {
+  //     return MyArray.from(this);
+  //   }
+
+  //   if (start && finished) {
+  //     if (begin < 0) {
+  //       start = this.length + start;
+  //     }
+
+  //     if (end < 0) {
+  //       finished = this.length + finished;
+  //     }
+
+  //     for (let i = start; i < finished; i++) {
+  //       newArr.push(this[i]);
+  //     }
+
+  //     return newArr;
+  //   }
+  // }
+
+  slice(begin, end) {
+    let resultArray = new MyArray();
+    let start = begin;
+    let finish = end;
+
+    if (!start && !finish) {
+      return (resultArray = MyArray.from(this));
+    }
+
+    if (start && finish) {
+      if (start < 0) {
+        start = this.length + start;
+      }
+
+      if (finish < 0) {
+        finish = this.length + finish;
+      }
+
+      for (let i = start; i < finish; i++) {
+        resultArray.push(this[i]);
+      }
+
+      return resultArray;
+    }
+
+    if (!start && finish) {
+      if (finish < 0) {
+        finish = this.length + finish;
+      }
+
+      for (let i = 0; i < finish; i++) {
+        resultArray.push(this[i]);
+      }
+
+      return resultArray;
+    }
+
+    if (start && !finish) {
+      if (start < 0) {
+        start = this.length + start;
+      }
+
+      for (let i = start; i < this.length; i++) {
+        resultArray.push(this[i]);
+      }
+
+      return resultArray;
+    }
+  }
+
   * [Symbol.iterator]() {
     for (let i = 0; i < this.length; i++) {
       yield this[i];
