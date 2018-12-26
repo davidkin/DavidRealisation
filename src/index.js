@@ -235,6 +235,19 @@ class MyArray {
     }
   }
 
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+    case 'string':
+      return `Array element ${this[0]} is string`;
+
+    case 'number':
+      return this[0];
+
+    default:
+      return this[0];
+    }
+  }
+
   * [Symbol.iterator]() {
     for (let i = 0; i < this.length; i++) {
       yield this[i];
