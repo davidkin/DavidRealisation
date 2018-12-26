@@ -185,32 +185,6 @@ class MyArray {
     }
   }
 
-  // slice(begin, end) {
-  //   const newArr = new MyArray();
-  //   let start = begin;
-  //   let finished = end;
-
-  //   if (!start && !finished) {
-  //     return MyArray.from(this);
-  //   }
-
-  //   if (start && finished) {
-  //     if (begin < 0) {
-  //       start = this.length + start;
-  //     }
-
-  //     if (end < 0) {
-  //       finished = this.length + finished;
-  //     }
-
-  //     for (let i = start; i < finished; i++) {
-  //       newArr.push(this[i]);
-  //     }
-
-  //     return newArr;
-  //   }
-  // }
-
   slice(begin, end) {
     let resultArray = new MyArray();
     let start = begin;
