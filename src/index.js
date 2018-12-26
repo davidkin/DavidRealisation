@@ -238,13 +238,13 @@ class MyArray {
   [Symbol.toPrimitive](hint) {
     switch (hint) {
     case 'string':
-      return `Array element ${this[hint]} is string`;
+      return `Array element ${this[0]} is string`;
 
     case 'number':
-      return this[hint];
+      return this[0];
 
     default:
-      return this[hint];
+      return this[0];
     }
   }
 
