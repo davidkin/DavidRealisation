@@ -1,19 +1,16 @@
 class MyArray {
-  constructor(...value) {
-    if (value.length === 1 && typeof value[0] === 'string') {
-      this[0] = value[0];
-      this.length = value.length;
-    } else if (value.length === 1) {
-      for (let i = 0; i < value[0]; i++) {
-        this[i] = undefined;
-      }
-      this.length = value[0];
+  constructor(...values) {
+    if (values.length === 1 && typeof values[0] === 'string') {
+      this[0] = values[0];
+      this.length = values.length;
+    } else if (values.length === 1) {
+      this.length = values[0];
     } else {
-      for (let i = 0; i < value.length; i++) {
-        this[i] = value[i];
+      for (let i = 0; i < values.length; i++) {
+        this[i] = values[i];
       }
 
-      this.length = value.length;
+      this.length = values.length;
     }
   }
 
@@ -43,9 +40,9 @@ class MyArray {
     return newArr;
   }
 
-  push(...value) {
-    for (let i = 0; i < value.length; i++) {
-      this[this.length] = value[i];
+  push(...values) {
+    for (let i = 0; i < values.length; i++) {
+      this[this.length] = values[i];
       this.length += 1;
     }
 
