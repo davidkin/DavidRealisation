@@ -16,29 +16,24 @@ class MyArray {
 
   // -------------------------------------
 
-  static from(value, callback, thisArg) {
-    const newArr = new MyArray();
+  static from(arg, callback, thisArg) {
+    const resultMassive = new MyArray();
 
-    if (callback === undefined && thisArg === undefined) {
-      for (let i = 0; i < value.length; i++) {
-        newArr.push(value[i]);
+    if (callback && thisArg || callback && !thisArg) {
+      for (let i = 0; i < arg.length; i++) {
+        resultMassive.push(callback.call(thisArg, arg[i], i, arg));
       }
+
+      return resultMassive;
     }
 
-    if (callback && thisArg) {
-      for (let i = 0; i < value.length; i++) {
-        newArr.push(callback.call(thisArg, value[i], i, value));
-      }
+    for (let i = 0; i < arg.length; i++) {
+      resultMassive.push(arg[i]);
     }
 
-    if (callback && !thisArg) {
-      for (let i = 0; i < value.length; i++) {
-        newArr.push(callback(value[i], i, value));
-      }
-    }
-
-    return newArr;
+    return resultMassive;
   }
+
 
   push(...values) {
     for (let i = 0; i < values.length; i++) {
