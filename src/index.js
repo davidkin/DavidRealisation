@@ -1,5 +1,3 @@
-/* eslint no-param-reassign: ["error", { "props": false }]*/
-
 class MyArray {
   constructor(...value) {
     if (value.length === 1 && typeof value[0] === 'string') {
