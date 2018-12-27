@@ -186,53 +186,18 @@ class MyArray {
   }
 
   slice(begin, end) {
-    let resultArray = new MyArray();
-    let start = begin;
-    let finish = end;
+    const newArr = new MyArray();
 
-    if (!start && !finish) {
-      return (resultArray = MyArray.from(this));
+    let start = begin ? begin : 0;
+    let finish = end ? end : this.length;
+
+    start = begin < 0 ? this.length + begin : start;
+    finish = end < 0 ? this.length + end : finish;
+
+    for (let i = start; i < finish; i++) {
+      newArr.push(this[i]);
     }
-
-    if (start && finish) {
-      if (start < 0) {
-        start = this.length + start;
-      }
-
-      if (finish < 0) {
-        finish = this.length + finish;
-      }
-
-      for (let i = start; i < finish; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
-
-    if (!start && finish) {
-      if (finish < 0) {
-        finish = this.length + finish;
-      }
-
-      for (let i = 0; i < finish; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
-
-    if (start && !finish) {
-      if (start < 0) {
-        start = this.length + start;
-      }
-
-      for (let i = start; i < this.length; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
+    return newArr;
   }
 
   * [Symbol.iterator]() {
