@@ -28,13 +28,13 @@ class MyArray {
       }
     }
 
-    if (Boolean(callback) && Boolean(thisArg)) {
+    if (callback && thisArg) {
       for (let i = 0; i < value.length; i++) {
         newArr.push(callback.call(thisArg, value[i], i, value));
       }
     }
 
-    if (Boolean(callback) && !thisArg) {
+    if (callback && !thisArg) {
       for (let i = 0; i < value.length; i++) {
         newArr.push(callback(value[i], i, value));
       }
