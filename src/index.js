@@ -1,16 +1,13 @@
 class MyArray {
   constructor(...values) {
-    if (values.length === 1 && typeof values[0] === 'string') {
-      this[0] = values[0];
-      this.length = values.length;
-    } else if (values.length === 1) {
+    if (values.length === 1 && typeof values[0] === 'number') {
       this.length = values[0];
     } else {
+      this.length = values.length;
+
       for (let i = 0; i < values.length; i++) {
         this[i] = values[i];
       }
-
-      this.length = values.length;
     }
   }
 
@@ -45,12 +42,11 @@ class MyArray {
   }
 
   pop() {
-    const elem = this[this.length - 1];
-
     if (this.length === 0) {
       return;
     }
 
+    const elem = this[this.length - 1];
     delete this[this.length - 1];
 
     this.length -= 1;
@@ -89,17 +85,13 @@ class MyArray {
   toString() {
     let newStr = '';
 
-    if (this.length === 0) {
-      return '';
-    }
-
     for (let i = 0; i < this.length - 1; i++) {
-      newStr += `${String(this[i])},`;
+      newStr += `${this[i]},`;
     }
 
     newStr += this[this.length - 1];
 
-    return newStr;
+    return this.length === 0 ? '' : newStr;
   }
 
   reduce(callback, startValue) {
@@ -176,53 +168,18 @@ class MyArray {
   }
 
   slice(begin, end) {
-    let resultArray = new MyArray();
-    let start = begin;
-    let finish = end;
+    const newArr = new MyArray();
 
-    if (!start && !finish) {
-      return (resultArray = MyArray.from(this));
+    let start = begin ? begin : 0;
+    let finish = end ? end : this.length;
+
+    start = begin < 0 ? this.length + begin : start;
+    finish = end < 0 ? this.length + end : finish;
+
+    for (let i = start; i < finish; i++) {
+      newArr.push(this[i]);
     }
-
-    if (start && finish) {
-      if (start < 0) {
-        start = this.length + start;
-      }
-
-      if (finish < 0) {
-        finish = this.length + finish;
-      }
-
-      for (let i = start; i < finish; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
-
-    if (!start && finish) {
-      if (finish < 0) {
-        finish = this.length + finish;
-      }
-
-      for (let i = 0; i < finish; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
-
-    if (start && !finish) {
-      if (start < 0) {
-        start = this.length + start;
-      }
-
-      for (let i = start; i < this.length; i++) {
-        resultArray.push(this[i]);
-      }
-
-      return resultArray;
-    }
+    return newArr;
   }
 
   [Symbol.toPrimitive](hint) {
