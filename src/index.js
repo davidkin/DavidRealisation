@@ -109,9 +109,7 @@ class MyArray {
       return this[0];
     }
 
-    if (startValue === undefined) {
-      acc = this[0];
-    } else {
+    if (startValue !== undefined) {
       acc = callback(startValue, this[0], 0, this);
     }
 
