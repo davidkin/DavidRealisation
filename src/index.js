@@ -1,16 +1,13 @@
 class MyArray {
   constructor(...values) {
-    if (values.length === 1 && typeof values[0] === 'string') {
-      this[0] = values[0];
-      this.length = values.length;
-    } else if (values.length === 1) {
+    if (values.length === 1 && typeof values[0] === 'number') {
       this.length = values[0];
     } else {
+      this.length = values.length;
+
       for (let i = 0; i < values.length; i++) {
         this[i] = values[i];
       }
-
-      this.length = values.length;
     }
   }
 
