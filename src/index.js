@@ -85,17 +85,13 @@ class MyArray {
   toString() {
     let newStr = '';
 
-    if (this.length === 0) {
-      return '';
-    }
-
     for (let i = 0; i < this.length - 1; i++) {
-      newStr += `${String(this[i])},`;
+      newStr += `${this[i]},`;
     }
 
     newStr += this[this.length - 1];
 
-    return newStr;
+    return this.length === 0 ? '' : newStr;
   }
 
   reduce(callback, startValue) {
