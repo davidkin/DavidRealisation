@@ -42,12 +42,11 @@ class MyArray {
   }
 
   pop() {
-    const elem = this[this.length - 1];
-
     if (this.length === 0) {
       return;
     }
 
+    const elem = this[this.length - 1];
     delete this[this.length - 1];
 
     this.length -= 1;
