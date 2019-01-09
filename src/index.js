@@ -169,21 +169,38 @@ class MyArray {
     }
   }
 
-  slice(begin, end) {
-    const newArr = new MyArray();
+  slice(beginArg, endArg) {
+    const resultArr = new MyArray();
 
-    let start = begin ? begin : 0;
-    let finish = end ? end : this.length;
+    let begin = 0;
+    let end = this.length;
 
-    start = begin < 0 ? this.length + begin : start;
-    finish = end < 0 ? this.length + end : finish;
-
-    for (let i = start; i < finish; i++) {
-      newArr[newArr.length] = this[i];
-      newArr.length += 1;
+    if (beginArg > this.length) {
+      return resultArr;
     }
 
-    return newArr;
+    if (beginArg > 0) {
+      begin = beginArg;
+    }
+
+    if (beginArg < 0 && Math.abs(beginArg) < this.length) {
+      begin = this.length + beginArg;
+    }
+
+    if (endArg >= 0 && endArg <= this.length) {
+      end = endArg;
+    }
+
+    if (endArg < 0) {
+      end = this.length + endArg;
+    }
+
+    for (let i = begin; i < end; i++) {
+      resultArr[resultArr.length] = this[i];
+      resultArr.length += 1;
+    }
+
+    return resultArr;
   }
 
   [Symbol.toPrimitive](hint) {
