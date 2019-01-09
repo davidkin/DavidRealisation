@@ -18,14 +18,16 @@ class MyArray {
 
     if (callback && thisArg || callback && !thisArg) {
       for (let i = 0; i < arg.length; i++) {
-        resultMassive.push(callback.call(thisArg, arg[i], i, arg));
+        resultMassive[i] = callback.call(thisArg, arg[i], i, arg);
+        resultMassive.length += 1;
       }
 
       return resultMassive;
     }
 
     for (let i = 0; i < arg.length; i++) {
-      resultMassive.push(arg[i]);
+      resultMassive[i] = arg[i];
+      resultMassive.length += 1;
     }
 
     return resultMassive;
@@ -62,9 +64,10 @@ class MyArray {
 
   map(callback, thisArg) {
     const newArr = new MyArray();
+    newArr.length = this.length;
 
     for (let i = 0; i < this.length; i++) {
-      newArr.push(callback.call(thisArg, this[i], i, this));
+      newArr[i] = callback.call(thisArg, this[i], i, this);
     }
 
     return newArr;
@@ -75,7 +78,8 @@ class MyArray {
 
     for (let i = 0; i < this.length; i++) {
       if (callback.call(thisArg, this[i], i, this)) {
-        newArr.push(this[i]);
+        newArr[newArr.length] = this[i];
+        newArr.length += 1;
       }
     }
 
@@ -175,8 +179,10 @@ class MyArray {
     finish = end < 0 ? this.length + end : finish;
 
     for (let i = start; i < finish; i++) {
-      newArr.push(this[i]);
+      newArr[newArr.length] = this[i];
+      newArr.length += 1;
     }
+
     return newArr;
   }
 
