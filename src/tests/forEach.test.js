@@ -1,4 +1,4 @@
-import MyArray from '../index.js';
+import MyArray from '../index';
 
 
 describe('tests for method forEach', () => {
