@@ -86,7 +86,7 @@ class MyArray<T> {
   }
 
   filter(
-    callback: (element?: T, index?: number, arr?: MyArray<T>) => boolean,
+    callback: (element?: T, index?: number, arr?: MyArray<T>) => any,
      thisArg?: any
   ): MyArray<T> {
     const newArr: MyArray<T> = new MyArray();
