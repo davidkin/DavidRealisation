@@ -11,6 +11,7 @@ class MyArray {
       }
     }
   }
+
   // -------------------------------------
   static from(arg, callback, thisArg) {
     const resultMassive = new MyArray();
@@ -29,6 +30,7 @@ class MyArray {
     }
     return resultMassive;
   }
+
   push(...values) {
     for (let i = 0; i < values.length; i++) {
       this[this.length] = values[i];
@@ -36,6 +38,7 @@ class MyArray {
     }
     return this.length;
   }
+
   pop() {
     if (this.length === 0) {
       return;
@@ -46,11 +49,13 @@ class MyArray {
     this.length -= 1;
     return elem;
   }
+
   forEach(callback, thisArg) {
     for (let i = 0; i < this.length; i++) {
       callback.call(thisArg, this[i], i, this);
     }
   }
+
   map(callback, thisArg) {
     const newArr = new MyArray();
     newArr.length = this.length;
@@ -60,6 +65,7 @@ class MyArray {
     }
     return newArr;
   }
+
   filter(callback, thisArg) {
     const newArr = new MyArray();
 
@@ -71,6 +77,7 @@ class MyArray {
     }
     return newArr;
   }
+
   toString() {
     let newStr = '';
 
@@ -80,6 +87,7 @@ class MyArray {
     newStr += this[this.length - 1];
     return this.length === 0 ? '' : newStr;
   }
+
   reduce(callback, startValue) {
     let acc = startValue === undefined ? this[0] : startValue;
 
@@ -104,6 +112,7 @@ class MyArray {
     }
     return acc;
   }
+
   sort(callback) {
     let cb = callback;
 
@@ -139,6 +148,7 @@ class MyArray {
     }
     return this;
   }
+
   find(callback, thisArg) {
     let elemFind = null;
 
@@ -150,6 +160,7 @@ class MyArray {
       }
     }
   }
+
   slice(beginArg, endArg) {
     const resultArr = new MyArray();
     let begin = 0;
@@ -181,6 +192,7 @@ class MyArray {
     }
     return resultArr;
   }
+
   [Symbol.toPrimitive](hint) {
     switch (hint) {
     case 'string':
@@ -191,10 +203,12 @@ class MyArray {
       return this[0];
     }
   }
+
   * [Symbol.iterator]() {
     for (let i = 0; i < this.length; i++) {
       yield this[i];
     }
   }
 }
+
 export default MyArray;
