@@ -100,7 +100,7 @@ class MyArray<T> {
     return this.length === 0 ? '' : newStr;
   }
 
-  reduce(callback: (acc: T, element: T, index: number, thisArg: MyArray<T>) => any, startValue?: any): any {
+  reduce(callback: (acc: any, element: T, index: number, thisArg: MyArray<T>) => any, startValue?: any): any {
     let acc = startValue === undefined ? this[0] : startValue;
 
     if (this.length === 0 && !startValue) {
