@@ -16,7 +16,7 @@ class MyArray<T> {
 
   // -------------------------------------
 
-  static from<U>(arg: any, callback: (element: U, index: number, pointer: MyArray<U>) => MyArray<U>, thisArg?: any) {
+  static from<U>(arg: any, callback: (element?: U, index?: number, pointer?: MyArray<U>) => MyArray<U>, thisArg?: any) {
     const resultMassive = new MyArray();
 
     if (callback && thisArg || callback && !thisArg) {
@@ -58,14 +58,14 @@ class MyArray<T> {
     return elem;
   }
 
-  forEach(callback:  (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any): void {
+  forEach(callback:  (element?: T, index?: number, arr?: MyArray<T>) => any, thisArg?: any): void {
     for (let i = 0; i < this.length; i++) {
       callback.call(thisArg, this[i], i, this);
     }
   }
 
-  map(callback: (element: T, index: number, pointer: MyArray<T>) => any, thisArg?: any): MyArray<T> {
-    const newArr: MyArray<T> = new MyArray();
+  map<U>(callback: (element?: T, index?: number, pointer?: MyArray<T>) => any, thisArg?: any): MyArray<U> {
+    const newArr: MyArray<U> = new MyArray();
     newArr.length = this.length;
 
     for (let i = 0; i < this.length; i++) {
@@ -75,7 +75,7 @@ class MyArray<T> {
     return newArr;
   }
 
-  filter(callback: (element: T, index: number, arr: MyArray<T>) => boolean, thisArg?: any): MyArray<T> {
+  filter(callback: (element?: T, index?: number, arr?: MyArray<T>) => boolean, thisArg?: any): MyArray<T> {
     const newArr: MyArray<T> = new MyArray();
 
     for (let i = 0; i < this.length; i++) {
@@ -100,7 +100,7 @@ class MyArray<T> {
     return this.length === 0 ? '' : newStr;
   }
 
-  reduce(callback: (acc: any, element: T, index: number, thisArg: MyArray<T>) => any, startValue?: any): any {
+  reduce<U>(callback: (acc?: any, element?: T, index?: number, thisArg?: MyArray<T>) => any, startValue?: any): any {
     let acc = startValue === undefined ? this[0] : startValue;
 
     if (this.length === 0 && !startValue) {
@@ -162,7 +162,7 @@ class MyArray<T> {
     return this;
   }
 
-  find(callback: (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any): T | undefined {
+  find(callback: (element?: T, index?: number, arr?: MyArray<T>) => any, thisArg?: any): T | undefined {
     let elemFind = null;
 
     for (let i = 0; i < this.length; i++) {
