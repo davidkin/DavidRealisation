@@ -16,7 +16,7 @@ class MyArray<T> {
 
   // -------------------------------------
 
-  static from(arg: any, callback: any, thisArg?: any) {
+  static from<U>(arg: any, callback: (element: U, index: number, pointer: MyArray<U>) => MyArray<U>, thisArg?: any) {
     const resultMassive = new MyArray();
 
     if (callback && thisArg || callback && !thisArg) {
@@ -36,8 +36,7 @@ class MyArray<T> {
     return resultMassive;
   }
 
-
-  push(...values: any[]): number {
+  push(...values: Array<T>): number {
     for (let i = 0; i < values.length; i++) {
       this[this.length] = values[i];
       this.length += 1;
@@ -46,7 +45,7 @@ class MyArray<T> {
     return this.length;
   }
 
-  pop() {
+  pop(): T | undefined {
     if (this.length === 0) {
       return;
     }
@@ -59,7 +58,7 @@ class MyArray<T> {
     return elem;
   }
 
-  forEach(callback:  (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any) {
+  forEach(callback:  (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any): void {
     for (let i = 0; i < this.length; i++) {
       callback.call(thisArg, this[i], i, this);
     }
@@ -101,7 +100,7 @@ class MyArray<T> {
     return this.length === 0 ? '' : newStr;
   }
 
-  reduce(callback: (acc: any, element: any, index: number, thisArg: MyArray<T>) => any, startValue?: any) {
+  reduce(callback: (acc: T, element: T, index: number, thisArg: MyArray<T>) => any, startValue?: any): any {
     let acc = startValue === undefined ? this[0] : startValue;
 
     if (this.length === 0 && !startValue) {
@@ -163,7 +162,7 @@ class MyArray<T> {
     return this;
   }
 
-  find(callback: (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any) {
+  find(callback: (element: T, index: number, arr: MyArray<T>) => any, thisArg?: any): T | undefined {
     let elemFind = null;
 
     for (let i = 0; i < this.length; i++) {
