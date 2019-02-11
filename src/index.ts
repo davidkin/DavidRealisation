@@ -64,7 +64,7 @@ class MyArray<T> {
 
   forEach(
     callback: (element?: T, index?: number, arr?: MyArray<T>) => any,
-     thisArg?: any
+    thisArg?: any
   ): void {
     for (let i = 0; i < this.length; i++) {
       callback.call(thisArg, this[i], i, this);
@@ -73,7 +73,7 @@ class MyArray<T> {
 
   map<U>(
     callback: (element?: T, index?: number, pointer?: MyArray<T>) => any,
-     thisArg?: any
+    thisArg?: any
   ): MyArray<U> {
     const newArr: MyArray<U> = new MyArray();
     newArr.length = this.length;
@@ -87,7 +87,7 @@ class MyArray<T> {
 
   filter(
     callback: (element?: T, index?: number, arr?: MyArray<T>) => any,
-     thisArg?: any
+    thisArg?: any
   ): MyArray<T> {
     const newArr: MyArray<T> = new MyArray();
 
@@ -115,7 +115,7 @@ class MyArray<T> {
 
   reduce<U>(
     callback: (acc?: any, element?: T, index?: number, thisArg?: MyArray<T>) => any,
-     startValue?: any
+    startValue?: any
   ): any {
     let acc = startValue === undefined ? this[0] : startValue;
 
@@ -134,7 +134,6 @@ class MyArray<T> {
     if (startValue !== undefined) {
       acc = callback(startValue, this[0], 0, this);
     }
-
 
     for (let i = 1; i < this.length; i++) {
       acc = callback(acc, this[i], i, this);
