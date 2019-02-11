@@ -16,12 +16,12 @@ class MyArray<T> {
 
   // -------------------------------------
 
-  static from<U>(
+  static from<U, R>(
     arg: any, 
-    callback: (element?: U, index?: number, pointer?: MyArray<U>) => MyArray<U>,
+    callback: (element?: U, index?: number, pointer?: MyArray<R>) => MyArray<R>,
     thisArg?: any
-  ) : MyArray<U> {
-    const resultMassive: MyArray<U> = new MyArray();
+  ) : MyArray<R> {
+    const resultMassive: MyArray<R> = new MyArray();
 
     if (callback && thisArg || callback && !thisArg) {
       for (let i = 0; i < arg.length; i++) {
